@@ -4,4 +4,4 @@ jdbcSettings:
   password: "Bamena123"
   driverClassName: "com.mysql.jdbc.Driver"
 
-packageName: "fi.vamk.e1800960.northwind.demo"
+packageName: "fi.vamk.e1800960.northwind.demo.Entity"
