@@ -1,5 +1,6 @@
 package fi.vamk.e1800960.northwind.demo;
 
+import java.io.Serializable;
 import java.sql.*;
 import javax.persistence.*;
 import lombok.Data;
