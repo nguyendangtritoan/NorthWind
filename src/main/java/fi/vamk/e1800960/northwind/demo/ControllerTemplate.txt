@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import fi.vamk.e1800960.northwind.demo.Repo.*;
+
 
 
 @RestController

@@ -112,7 +112,7 @@ public class CreateAndSearchFile {
             String absoluteFilePath = "D:" + fileSeparator + "Database" + fileSeparator + "northwind" + fileSeparator
             + "e1800960_northwind" + fileSeparator + "src" + fileSeparator + "main" + fileSeparator + "java"
             + fileSeparator + "fi" + fileSeparator + "vamk" + fileSeparator + "e1800960" + fileSeparator
-            + "northwind" + fileSeparator + "demo" + "ControllerTemplate";
+            + "northwind" + fileSeparator + "demo" +fileSeparator+ "ControllerTemplate.txt";
             File file=new File(absoluteFilePath);    //creates a new file instance
             FileReader fr=new FileReader(file);   //reads the file
             BufferedReader br=new BufferedReader(fr);  //creates a buffering character input stream
