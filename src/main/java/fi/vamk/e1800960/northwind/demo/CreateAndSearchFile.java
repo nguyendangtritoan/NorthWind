@@ -1,8 +1,10 @@
 package fi.vamk.e1800960.northwind.demo;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -60,13 +62,12 @@ public class CreateAndSearchFile {
             } else
                 System.out.println("File " + absoluteFilePath + " already exists");
             if (file.exists())
-                writeUsingBufferedWriter(data(string,false), 1, file); // Write to Repository file
+                writeUsingBufferedWriter(data(string,false), 1, file1); // Write to Repository file
         }
 
     }
 
-    private static void writeUsingBufferedWriter(String data, int noOfLines, File file)
-        throws FileNotFoundException {
+    private static void writeUsingBufferedWriter(String data, int noOfLines, File file) throws FileNotFoundException {
             //Empty the file first
             PrintWriter writer = new PrintWriter(file);
             writer.print("");
@@ -92,16 +93,39 @@ public class CreateAndSearchFile {
                 }
             }
     }
-    private static String data(String className,boolean x){
+    private static String data(String className,boolean x) throws IOException {
         String content_repo="package fi.vamk.e1800960.northwind.demo.Repo;"+System.getProperty("line.separator")+
             "import org.springframework.data.jpa.repository.JpaRepository;"+System.getProperty("line.separator")+
             "public interface "
             +className+"Repository extends JpaRepository<fi.vamk.e1800960.northwind.demo.Entity."+className+", Integer> {}"
             +System.getProperty("line.separator");
-        String content_controller="";
+            
+        String content_controller=readContentFile();
         if(x)
-            return content_repo;
+            return content_repo; 
         else
             return content_controller;
     }
-}
+
+    private static String readContentFile() throws IOException{
+            String fileSeparator = System.getProperty("file.separator");
+            String absoluteFilePath = "D:" + fileSeparator + "Database" + fileSeparator + "northwind" + fileSeparator
+            + "e1800960_northwind" + fileSeparator + "src" + fileSeparator + "main" + fileSeparator + "java"
+            + fileSeparator + "fi" + fileSeparator + "vamk" + fileSeparator + "e1800960" + fileSeparator
+            + "northwind" + fileSeparator + "demo" + "ControllerTemplate";
+            File file=new File(absoluteFilePath);    //creates a new file instance
+            FileReader fr=new FileReader(file);   //reads the file
+            BufferedReader br=new BufferedReader(fr);  //creates a buffering character input stream
+            StringBuffer sb=new StringBuffer();    //constructs a string buffer with no characters
+            String line;
+            while((line=br.readLine())!=null)
+            {
+                sb.append(line);      //appends line to string buffer
+                sb.append(System.getProperty("line.separator"));     //line feed
+            }
+            fr.close();    //closes the stream and release the resources
+            System.out.println("Contents of File: ");
+            System.out.println(sb.toString());   //returns a string that textually represents the object
+            return sb.toString();
+        }
+    }
