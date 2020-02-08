@@ -106,7 +106,6 @@ public class CreateAndSearchFile {
     }
 
     private static String readContentFile(String className) throws IOException{
-            String fileSeparator = System.getProperty("file.separator");
             String absoluteFilePath = 
             "D:\\Database\\northwind\\e1800960_northwind\\src\\main\\java\\fi\\vamk\\e1800960\\northwind\\demo\\ControllerTemplate.txt";
             File file=new File(absoluteFilePath);    //creates a new file instance
