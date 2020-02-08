@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import fi.vamk.e1800960.northwind.demo.Entity.*;
 import fi.vamk.e1800960.northwind.demo.Repo.*;
 
+
 @RestController
 
 public class SalesReportsController {

@@ -36,10 +36,10 @@ public class CreateAndSearchFile {
 
             // Generate Repository class
             String fileSeparator = System.getProperty("file.separator");
-            String absoluteFilePath = "D:" + fileSeparator + "Database" + fileSeparator + "northwind" + fileSeparator
-                    + "e1800960_northwind" + fileSeparator + "src" + fileSeparator + "main" + fileSeparator + "java"
-                    + fileSeparator + "fi" + fileSeparator + "vamk" + fileSeparator + "e1800960" + fileSeparator
-                    + "northwind" + fileSeparator + "demo" + fileSeparator + "Repo" + fileSeparator + string
+            String absoluteFilePath = "D:\\Database\\northwind" + fileSeparator
+                    + "e1800960_northwind\\src\\main\\java"
+                    + fileSeparator + "fi\\vamk\\e1800960" + fileSeparator
+                    + "northwind\\demo\\Repo" + fileSeparator + string
                     + "Repository.java";
 
             File file = new File(absoluteFilePath);
@@ -51,11 +51,9 @@ public class CreateAndSearchFile {
                 writeUsingBufferedWriter(data(string,true), 1, file); // Write to Repository file
 
             // Generate Controller class
-            String absoluteFilePath2 = "D:" + fileSeparator + "Database" + fileSeparator + "northwind" + fileSeparator
-                    + "e1800960_northwind" + fileSeparator + "src" + fileSeparator + "main" + fileSeparator + "java"
-                    + fileSeparator + "fi" + fileSeparator + "vamk" + fileSeparator + "e1800960" + fileSeparator
-                    + "northwind" + fileSeparator + "demo" + fileSeparator + "Controller" + fileSeparator + string
-                    + "Controller.java";
+            String absoluteFilePath2 = 
+            "D:\\Database\\northwind\\e1800960_northwind\\src\\main\\java\\fi\\vamk\\e1800960\\northwind\\demo\\Controller\\" 
+            + string+ "Controller.java";
             File file1 = new File(absoluteFilePath2);
             if (file1.createNewFile()) {
                 System.out.println(absoluteFilePath + " File Created");
@@ -100,19 +98,17 @@ public class CreateAndSearchFile {
             +className+"Repository extends JpaRepository<fi.vamk.e1800960.northwind.demo.Entity."+className+", Integer> {}"
             +System.getProperty("line.separator");
             
-        String content_controller=readContentFile();
+        String content_controller=readContentFile(className);
         if(x)
             return content_repo; 
         else
             return content_controller;
     }
 
-    private static String readContentFile() throws IOException{
+    private static String readContentFile(String className) throws IOException{
             String fileSeparator = System.getProperty("file.separator");
-            String absoluteFilePath = "D:" + fileSeparator + "Database" + fileSeparator + "northwind" + fileSeparator
-            + "e1800960_northwind" + fileSeparator + "src" + fileSeparator + "main" + fileSeparator + "java"
-            + fileSeparator + "fi" + fileSeparator + "vamk" + fileSeparator + "e1800960" + fileSeparator
-            + "northwind" + fileSeparator + "demo" +fileSeparator+ "ControllerTemplate.txt";
+            String absoluteFilePath = 
+            "D:\\Database\\northwind\\e1800960_northwind\\src\\main\\java\\fi\\vamk\\e1800960\\northwind\\demo\\ControllerTemplate.txt";
             File file=new File(absoluteFilePath);    //creates a new file instance
             FileReader fr=new FileReader(file);   //reads the file
             BufferedReader br=new BufferedReader(fr);  //creates a buffering character input stream
@@ -120,7 +116,7 @@ public class CreateAndSearchFile {
             String line;
             while((line=br.readLine())!=null)
             {
-                sb.append(line);      //appends line to string buffer
+                sb.append(line.replaceAll("EntityNeedReplace", className));      //appends line to string buffer
                 sb.append(System.getProperty("line.separator"));     //line feed
             }
             fr.close();    //closes the stream and release the resources

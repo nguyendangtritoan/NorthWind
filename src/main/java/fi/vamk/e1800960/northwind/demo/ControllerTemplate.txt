@@ -19,21 +19,21 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import fi.vamk.e1800960.northwind.demo.Entity.*;
 import fi.vamk.e1800960.northwind.demo.Repo.*;
-
 
 
 @RestController
 
-public class EntityController {
+public class EntityNeedReplaceController {
 
 	@Autowired
 
-	private EntityRepository repository;
+	private EntityNeedReplaceRepository repository;
 	
-    @RequestMapping(value = "/Entity" , method = RequestMethod.POST)
+    @RequestMapping(value = "/EntityNeedReplace" , method = RequestMethod.POST)
 
-    public @ResponseBody Entity create(@RequestBody Entity item) {
+    public @ResponseBody EntityNeedReplace create(@RequestBody EntityNeedReplace item) {
 
     	return repository.save(item);
 
@@ -41,9 +41,9 @@ public class EntityController {
 
 	
 
-    @RequestMapping("/Entity")
+    @RequestMapping("/EntityNeedReplace")
 
-    public Iterable<Entity> municipalities(@RequestParam(value="name", defaultValue="World") String name) {
+    public Iterable<EntityNeedReplace> municipalities(@RequestParam(value="name", defaultValue="World") String name) {
 
         return repository.findAll();
 
@@ -51,17 +51,17 @@ public class EntityController {
 
     
 
-    @RequestMapping("/Entity/{id}")
+    @RequestMapping("/EntityNeedReplace/{id}")
 
-    public Optional<Entity> get(@PathVariable("id") int id) {
+    public Optional<EntityNeedReplace> get(@PathVariable("id") int id) {
         return repository.findById(id);
     }    
 
 
 
-    @RequestMapping(value = "/Entity" , method = RequestMethod.PUT)
+    @RequestMapping(value = "/EntityNeedReplace" , method = RequestMethod.PUT)
 
-    public @ResponseBody Entity update(@RequestBody Entity item) {
+    public @ResponseBody EntityNeedReplace update(@RequestBody EntityNeedReplace item) {
 
     	return repository.save(item);
 
@@ -69,9 +69,9 @@ public class EntityController {
 
     
 
-    @RequestMapping(value = "/Entity" , method = RequestMethod.DELETE)
+    @RequestMapping(value = "/EntityNeedReplace" , method = RequestMethod.DELETE)
 
-    public void delete(@RequestBody Entity item) {
+    public void delete(@RequestBody EntityNeedReplace item) {
 
     	repository.delete(item);
 
